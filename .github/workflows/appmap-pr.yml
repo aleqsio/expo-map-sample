@@ -25,5 +25,6 @@ jobs:
           mode: pr
           agent_api_key: ${{ secrets.AGENT_API_KEY }}   # opencode key — omit for deterministic-only
           agent_provider: opencode
+          xcode: "26.2"   # 26.3 trips SDK 57 from-source strictness, 16.4 lacks Swift 6.2
           # project: apps/mobile
           # publish: "false"   # private repos that only want the artifact link
