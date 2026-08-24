@@ -34,4 +34,5 @@ jobs:
           mode: baseline
           agent_api_key: ${{ secrets.AGENT_API_KEY }}
           agent_provider: opencode
+          expo_token: ${{ secrets.EXPO_TOKEN }}   # EAS builds/serves the dev client
           flows_pr: "true"

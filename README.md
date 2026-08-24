@@ -24,6 +24,10 @@ Six screens, enough to exercise the interesting cases:
   provider (**opencode** here; `claude` / `codex` / `gemini` work too — set the matching
   `AGENT_API_KEY` repo secret).
 - [.appmap/SKILL.md](.appmap/SKILL.md) — app-specific guidance for the agent.
+- [eas.json](eas.json) — the `development-simulator` profile. The Action owns no build pipeline:
+  the dev client comes from **EAS Build** (reused by fingerprint when only JS changed, built on
+  Expo's infra otherwise). One-time setup: `npx eas init` to link the project, then add an
+  `EXPO_TOKEN` repo secret. To bring your own build instead, pass `app_path`.
 - `.appmap/flows/` — replayable navigation flows, committed like code; the baseline job's flows PR
   fills this in, after which CI replays them with no LLM involved.
 
