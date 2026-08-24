@@ -2,7 +2,7 @@
   "$comment": ".appmap/config.json — mechanical knobs for the expo-map Action's deterministic lane.",
   "scheme": "expomapsample",
   "appName": "expo-map-sample",
-  "device": "iPhone 16 Pro",
+  "device": "iPhone 17 Pro",
   "waits": { "transition": 2000, "network": 3000, "boot": 12000 },
   "suspects": { "depth": 2, "broadCap": 8 },
   "agent": { "enabled": true, "maxScreens": 8, "provider": "opencode" },
