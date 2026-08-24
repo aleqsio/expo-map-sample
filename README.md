@@ -1,56 +1,30 @@
-# Welcome to your Expo app 👋
+# expo-map-sample
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A tiny expo-router app that dogfoods the [expo-map](https://github.com/aleqsio/expo-map) GitHub
+Action: every screen is mapped on an iOS simulator in CI, and each pull request gets a sticky
+comment linking a [visual review](https://appmap-visualiser.vercel.app) of what changed on-screen.
 
-## Get started
+Six screens, enough to exercise the interesting cases:
 
-1. Install dependencies
+| route | via |
+| --- | --- |
+| `/` `/explore` `/profile` | native tabs |
+| `/item/[id]` | route param (`Featured item` on Home; items chain to the next id) |
+| `/settings` | pushed from Profile; two switches for state-variant captures |
+| `/modal` | modal presentation (`About this app` on Home) |
 
-   ```bash
-   npm install
-   ```
+## How CI is wired
 
-2. Start the app
+- [.github/workflows/appmap-baseline.yml](.github/workflows/appmap-baseline.yml) — on every push
+  to `main` (and a weekday cron): refresh the full map incrementally, publish it to the `appmaps`
+  branch, open a flows PR for screens the agent had to explore.
+- [.github/workflows/appmap-pr.yml](.github/workflows/appmap-pr.yml) — on every PR: capture only
+  the screens the diff can affect, pack an `.appmapdiff`, comment with a preloaded visualiser link.
+- [.appmap/config.json](.appmap/config.json) — scheme, device, waits, sample params, and the agent
+  provider (**opencode** here; `claude` / `codex` / `gemini` work too — set the matching
+  `AGENT_API_KEY` repo secret).
+- [.appmap/SKILL.md](.appmap/SKILL.md) — app-specific guidance for the agent.
+- `.appmap/flows/` — replayable navigation flows, committed like code; the baseline job's flows PR
+  fills this in, after which CI replays them with no LLM involved.
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Run the app locally the usual way: `npm install && npx expo run:ios`.

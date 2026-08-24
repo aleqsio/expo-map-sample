@@ -1,4 +1,5 @@
 import * as Device from 'expo-device';
+import { Link } from 'expo-router';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -46,13 +47,15 @@ export default function HomeScreen() {
         <ThemedView type="backgroundElement" style={styles.stepContainer}>
           <HintRow
             title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+            hint={<ThemedText type="code">src/app/(tabs)/index.tsx</ThemedText>}
           />
           <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
+          <Link href="/item/42">
+            <HintRow title="Featured item" hint={<ThemedText type="small">open item #42</ThemedText>} />
+          </Link>
+          <Link href="/modal">
+            <HintRow title="About this app" hint={<ThemedText type="small">opens as a modal</ThemedText>} />
+          </Link>
         </ThemedView>
 
         {Platform.OS === 'web' && <WebBadge />}
