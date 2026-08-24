@@ -20,7 +20,7 @@ permissions:
   pull-requests: write
 jobs:
   baseline:
-    runs-on: macos-15
+    runs-on: macos-26
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
@@ -34,5 +34,4 @@ jobs:
           mode: baseline
           agent_api_key: ${{ secrets.AGENT_API_KEY }}
           agent_provider: opencode
-          xcode: "26.2"   # 26.3 trips SDK 57 from-source strictness, 16.4 lacks Swift 6.2
           flows_pr: "true"
