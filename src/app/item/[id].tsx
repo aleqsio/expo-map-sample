@@ -13,7 +13,8 @@ export default function ItemScreen() {
     <ThemedView style={styles.container}>
       <ThemedView style={styles.content}>
         <ThemedText type="title">Item #{id}</ThemedText>
-        <ThemedText type="small">A sample detail screen reached with a route param.</ThemedText>
+        <ThemedText type="small">Now with a star rating — reached with a route param.</ThemedText>
+        <ThemedText>★★★★☆</ThemedText>
 
         <ThemedView type="backgroundElement" style={styles.card}>
           <HintRow title="Route" hint={<ThemedText type="code">/item/[id]</ThemedText>} />

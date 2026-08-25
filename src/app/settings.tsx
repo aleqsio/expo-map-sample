@@ -12,6 +12,9 @@ export default function SettingsScreen() {
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.content}>
+        <ThemedText type="code" style={styles.sectionLabel}>
+          general
+        </ThemedText>
         <ThemedView type="backgroundElement" style={styles.card}>
           <HintRow
             title="Notifications"
@@ -21,7 +24,13 @@ export default function SettingsScreen() {
             title="Haptics"
             hint={<Switch value={haptics} onValueChange={setHaptics} />}
           />
-          <HintRow title="Version" hint={<ThemedText type="code">1.0.0</ThemedText>} />
+          <HintRow title="Appearance" hint={<ThemedText type="small">System</ThemedText>} />
+        </ThemedView>
+        <ThemedText type="code" style={styles.sectionLabel}>
+          about
+        </ThemedText>
+        <ThemedView type="backgroundElement" style={styles.card}>
+          <HintRow title="Version" hint={<ThemedText type="code">1.1.0</ThemedText>} />
         </ThemedView>
       </ThemedView>
     </ThemedView>
@@ -39,6 +48,11 @@ const styles = StyleSheet.create({
     maxWidth: MaxContentWidth,
     paddingHorizontal: Spacing.four,
     paddingTop: Spacing.six,
+    gap: Spacing.three,
+  },
+  sectionLabel: {
+    textTransform: 'uppercase',
+    opacity: 0.6,
   },
   card: {
     gap: Spacing.three,
