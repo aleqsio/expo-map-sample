@@ -44,5 +44,5 @@ example
 
 # expo-map CI
 .expo-map/
-.appmap-ci/
+.screenmap-ci/
 bun.lock

@@ -1,6 +1,6 @@
 ---
-name: appmap-project
-description: Project-specific guidance for the appmap agent when it explores screens of this app in CI.
+name: screenmap-project
+description: Project-specific guidance for the screenmap agent when it explores screens of this app in CI.
 ---
 
 # How to explore this app
