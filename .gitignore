@@ -42,7 +42,7 @@ example
 /ios
 /android
 
-# expo-map CI
-.expo-map/
+# screenmap CI
+.screenmap/out/
 .screenmap-ci/
 bun.lock

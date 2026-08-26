@@ -10,7 +10,7 @@ export default function AboutModal() {
       <ThemedView style={styles.content}>
         <ThemedText type="title">About</ThemedText>
         <ThemedText>
-          A tiny expo-router app used to demo the expo-map GitHub Action: every screen is mapped on
+          A tiny expo-router app used to demo the screenmap GitHub Action: every screen is mapped on
           an iOS simulator, and pull requests get a visual review of what changed on-screen.
         </ThemedText>
         <ThemedText type="small">This screen opens with modal presentation.</ThemedText>
