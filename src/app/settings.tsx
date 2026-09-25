@@ -21,7 +21,7 @@ export default function SettingsScreen() {
             title="Haptics"
             hint={<Switch value={haptics} onValueChange={setHaptics} />}
           />
-          <HintRow title="Version" hint={<ThemedText type="code">1.0.0</ThemedText>} />
+          <HintRow title="Version" hint={<ThemedText type="code">1.0.1</ThemedText>} />
         </ThemedView>
       </ThemedView>
     </ThemedView>

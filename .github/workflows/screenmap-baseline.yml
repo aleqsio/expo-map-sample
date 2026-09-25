@@ -29,10 +29,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: aleqsio/screenmap@v1
+      - uses: aleqsio/screenmap@nativescript-fixes
         with:
           mode: baseline
           agent_api_key: ${{ secrets.AGENT_API_KEY }}
           agent_provider: opencode
           expo_token: ${{ secrets.EXPO_TOKEN }}   # EAS builds/serves the dev client
-          flows_pr: "true"
+          flows_pr: "false"   # CI smoke test of nativescript-fixes: no flows PR,
+          publish: "false"    # and never overwrite main's baseline
