@@ -29,7 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: aleqsio/screenmap@nativescript-fixes
+      - uses: aleqsio/screenmap@febe3f7958254bf93de9fc67d34282fe8827baad
         with:
           mode: baseline
           agent_api_key: ${{ secrets.AGENT_API_KEY }}
